@@ -13,6 +13,7 @@ public abstract class Evento {
     public String data;
     public int horario;
     public String status;
+    //ENUM
     //CLASSIFICACAO FLOAT;
 
     static ArrayList<Evento> eventos = new ArrayList<Evento>(20);
