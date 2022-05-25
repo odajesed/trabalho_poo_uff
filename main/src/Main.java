@@ -7,14 +7,14 @@ import Evento.Show.Show;
 
 
 public class Main {
-    public static void main(String[] args) {
+    public static void main(String[] args) throws Exception {
         Artista a1 = new Artista("a","a",13);
-        Evento s1 = new Show("a",5,1,1,"a",a1);
+        Evento s1 = new Show("a",5,500,1,"a",1,a1,"A");
 
         Palestrante p1 = new Palestrante("a","a");
-        Evento pale1 = new Palestra("a",5,1,1,"a","a",p1);
+        Evento pale1 = new Palestra("a",5,1,1,"a",1,"a",p1,"A");
 
-        Usuário u1 = new Usuário("11",1000);
+        Usuário u1 = new Usuário("11",10);
         u1.compra_evento(s1);
         u1.imprimir_lista();
 

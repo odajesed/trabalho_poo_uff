@@ -11,15 +11,20 @@ public abstract class Evento {
     public float preco;
     public float duracao;
     public String data;
+    public int horario;
+    String status;
+    //CLASSIFICACAO FLOAT;
 
     static ArrayList<Evento> eventos = new ArrayList<Evento>(20);
-    public Evento(String tipo, int numero_maximo, float preco,float duracao, String data)
+    public Evento(String tipo, int numero_maximo, float preco,float duracao, String data,int horario,String status)
     {
         this.tipo = tipo;
         this.numero_maximo = numero_maximo;
         this.preco = preco;
         this.duracao = duracao;
         this.data = data;
+        this.horario = horario;
+        this.status = status;
     }
 
     public int get_vagas_restantes() {
