@@ -2,6 +2,8 @@ package Evento;
 
 import jdk.jfr.Event;
 
+import java.util.ArrayList;
+
 public abstract class Evento {
     public String tipo;
     public int numero_maximo;
@@ -10,6 +12,7 @@ public abstract class Evento {
     public float duracao;
     public String data;
 
+    static ArrayList<Evento> eventos = new ArrayList<Evento>(20);
     public Evento(String tipo, int numero_maximo, float preco,float duracao, String data)
     {
         this.tipo = tipo;
@@ -26,7 +29,17 @@ public abstract class Evento {
         // VAGAS = 10
         // Logo, vagas restantes são 50-10 = 40
     }
-
+    public static void adicionar_evento(Evento evento)
+    {
+        eventos.add(evento);
+    }
+    public static void imprimir_lista()
+    {
+        for(int i =0; i< eventos.size(); i++)
+        {
+            System.out.println(eventos.get(i));
+        }
+    }
     //Toda vez que comprar evento adiciona +1 em vagas
 
 }

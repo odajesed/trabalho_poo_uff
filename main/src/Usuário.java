@@ -38,4 +38,9 @@ public class Usuário {
     }
 
 
+    public void compra_evento()
+    {
+        
+    }
+
 }
