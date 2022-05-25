@@ -12,7 +12,7 @@ public abstract class Evento {
     public float duracao;
     public String data;
     public int horario;
-    String status;
+    public String status;
     //CLASSIFICACAO FLOAT;
 
     static ArrayList<Evento> eventos = new ArrayList<Evento>(20);
