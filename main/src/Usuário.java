@@ -18,16 +18,7 @@ public class Usuário {
     }
 
 
-    public void add_to_lista_de_eventos(Evento evento)
-    {
-        if(lista_de_eventos.size() == 5)
-        {
-            throw new IndexOutOfBoundsException("Vocẽ já está inscrito em muitos eventos!");
-        }
-        else {
-            lista_de_eventos.add(evento);
-        }
-    }
+
 
     public float getSaldo() {
         return saldo;
@@ -37,10 +28,18 @@ public class Usuário {
         return cpf;
     }
 
-
-    public void compra_evento()
+    public void imprimir_lista()
     {
-        
+        for(int i =0; i< this.lista_de_eventos.size(); i++)
+        {
+            System.out.println(this.lista_de_eventos.get(i));
+        }
+    }
+    public void compra_evento(Evento evento)
+    {
+        //Erro caso nao tenho saldo
+        saldo -= evento.preco;
+        this.lista_de_eventos.add(evento);
     }
 
 }
