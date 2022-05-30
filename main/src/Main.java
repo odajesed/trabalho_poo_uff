@@ -4,7 +4,7 @@ import Evento.Palestra.Palestra;
 import Evento.Palestra.Palestrante;
 import Evento.Show.Artista;
 import Evento.Show.Show;
-
+import Evento.Gerenciador_Palestra;
 
 public class Main {
     public static void main(String[] args) throws Exception {
@@ -16,7 +16,7 @@ public class Main {
 
         Usuário u1 = new Usuário("11",10000);
 
-        ((Palestra) pale1).fim_palestra();
+        Gerenciador_Palestra.fim_palestra(pale1);
         u1.compra_evento(s1);
         u1.imprimir_lista();
 
