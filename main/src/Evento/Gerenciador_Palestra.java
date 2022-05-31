@@ -5,6 +5,7 @@ import java.util.Random;
 
 import Evento.Evento;
 import Evento.Palestra.Palestra;
+import static java.lang.Math.abs;
 
 
 
@@ -20,7 +21,7 @@ public class Gerenciador_Palestra {
         else
         {
             System.out.println("A palestra acabou: aqui está seu código para resgatar o certificado!");
-            System.out.println(p);
+            System.out.println(abs(p));
 
         }
     }
