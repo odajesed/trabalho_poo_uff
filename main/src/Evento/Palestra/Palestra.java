@@ -13,8 +13,8 @@ public class Palestra extends Evento {
 
     Palestrante palestrante;
 
-    public Palestra(String tipo, int numero_maximo, float preco, float duracao, String data, int horario, String tema, Palestrante palestrante, String status) {
-        super(tipo, numero_maximo, preco, duracao, data, horario,status);
+    public Palestra(String nome, String tipo, int numero_maximo, float preco, float duracao, String data, int horario, String tema, Palestrante palestrante, String status) {
+        super(nome,tipo, numero_maximo, preco, duracao, data, horario,status);
         this.tema = tema;
         this.palestrante = palestrante;
         this.status = status;
