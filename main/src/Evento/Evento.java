@@ -5,6 +5,7 @@ import jdk.jfr.Event;
 import java.util.ArrayList;
 
 public abstract class Evento {
+    public String nome;
     public String tipo;
     public int numero_maximo;
     public int vagas = 0;
@@ -17,8 +18,9 @@ public abstract class Evento {
     //CLASSIFICACAO FLOAT;
 
     static ArrayList<Evento> eventos = new ArrayList<Evento>(20);
-    public Evento(String tipo, int numero_maximo, float preco,float duracao, String data,int horario,String status)
+    public Evento(String nome, String tipo, int numero_maximo, float preco,float duracao, String data,int horario,String status)
     {
+        this.nome = nome;
         this.tipo = tipo;
         this.numero_maximo = numero_maximo;
         this.preco = preco;
