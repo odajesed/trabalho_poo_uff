@@ -1,32 +1,22 @@
 import Evento.Evento;
 
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
 
 public class Usuário {
 
     String cpf;
     float saldo;
-
-    // O usuário só pode se inscrever em 5 eventos por CPF!
-    // LISTA COM TODOS EVENTOS JA COMPRADOS PELO USUARIO E PROMOCAO POR COMPRA
-    ArrayList<Evento> lista_de_eventos = new ArrayList<Evento>(5);
+    int bonus = 0; //toda vez que o usuario realiza sua 5 compra consecutiva ele ganha um saldo extra
+    
+    // MAP COM TODOS OS EVENTOS JA COMPRADOS PELO USUARIO COM LIMITE DE 5 INGRESSOS POR EVENTO
+    HashMap<String,Integer> historico_compras = new HashMap<String,Integer>();
 
     public Usuário(String cpf, float saldo)
     {
         this.saldo = saldo;
         this.cpf = cpf;
-    }
-
-
-    public void add_to_lista_de_eventos(Evento evento)
-    {
-        if(lista_de_eventos.size() == 5)
-        {
-            throw new IndexOutOfBoundsException("Vocẽ já está inscrito em muitos eventos!");
-        }
-        else {
-            lista_de_eventos.add(evento);
-        }
     }
 
     public float getSaldo() {
@@ -36,14 +26,24 @@ public class Usuário {
     public String getCpf() {
         return cpf;
     }
-
-    public void imprimir_lista()
-    {
-        for(int i =0; i< this.lista_de_eventos.size(); i++)
-        {
-            System.out.println(this.lista_de_eventos.get(i));
+    
+    public void add_to_historico_compras (Evento evento){
+        if (historico_compras.get(evento.nome) != null){
+            if(historico_compras.get(evento.nome) == 5){
+                throw new IndexOutOfBoundsException("Vocẽ não pode comprar mais de 5 ingressos para o mesmo evento!");
+            }else historico_compras.put(evento.nome, historico_compras.get(evento.nome) + 1);
+        }else historico_compras.put(evento.nome, 1);
+    }
+    
+    public void imprimir_historico(){
+        System.out.println("\nVocê possui:");
+        for(Map.Entry<String, Integer> entry : historico_compras.entrySet()) {
+            String nome = entry.getKey();
+            Integer num_ing = entry.getValue();
+            System.out.println(num_ing+" ingressos para o evento "+nome);
         }
     }
+    
     public void compra_evento(Evento evento) throws Exception {
         if(saldo - evento.preco < 0)
         {
@@ -51,8 +51,13 @@ public class Usuário {
         }
         else {
             saldo -= evento.preco;
-            this.add_to_lista_de_eventos(evento);
+            bonus += 1;
+            this.add_to_historico_compras(evento);
+            if (bonus == 5){
+                System.out.println("\n+30,00R$ de saldo bônus pela sua 5 compra conosco!");
+                saldo += 30;
+                bonus = 0;
+            }
         }
     }
-
 }
