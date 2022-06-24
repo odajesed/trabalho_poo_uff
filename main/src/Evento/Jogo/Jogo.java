@@ -8,8 +8,8 @@ public class Jogo extends Evento {
     private int golsTime1;
     private int golsTime2;
     
-    public Jogo(String tipo, int numero_maximo, float preco, float duracao, String data,int horario,String status) {
-        super(tipo, numero_maximo, preco, duracao, data,horario,status);
+    public Jogo(String nome,String tipo, int numero_maximo, float preco, float duracao, String data,int horario,String status) {
+        super(nome,tipo, numero_maximo, preco, duracao, data,horario,status);
     }
 
     /**
