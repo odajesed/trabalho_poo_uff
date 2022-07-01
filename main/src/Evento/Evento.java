@@ -13,12 +13,11 @@ public abstract class Evento {
     public float duracao;
     public String data;
     public int horario;
-    public String status;
-    //ENUM
+    public StatusEvento status;
     //CLASSIFICACAO FLOAT;
 
     static ArrayList<Evento> eventos = new ArrayList<Evento>(20);
-    public Evento(String nome, String tipo, int numero_maximo, float preco,float duracao, String data,int horario,String status)
+    public Evento(String nome, String tipo, int numero_maximo, float preco,float duracao, String data,int horario, StatusEvento status)
     {
         this.nome = nome;
         this.tipo = tipo;
@@ -40,6 +39,9 @@ public abstract class Evento {
     public static void adicionar_evento(Evento evento)
     {
         eventos.add(evento);
+    }
+    public static void remover_evento(Evento evento){
+        eventos.remove(evento);
     }
     public static void imprimir_lista()
     {

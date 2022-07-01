@@ -1,6 +1,7 @@
 package Evento.Jogo;
 
 import Evento.Evento;
+import Evento.StatusEvento;
 
 public class Jogo extends Evento {
     private Time time1;
@@ -8,7 +9,7 @@ public class Jogo extends Evento {
     private int golsTime1;
     private int golsTime2;
     
-    public Jogo(String nome,String tipo, int numero_maximo, float preco, float duracao, String data,int horario,String status) {
+    public Jogo(String nome,String tipo, int numero_maximo, float preco, float duracao, String data,int horario, StatusEvento status) {
         super(nome,tipo, numero_maximo, preco, duracao, data,horario,status);
     }
 

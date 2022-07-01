@@ -14,7 +14,7 @@ public class Gerenciador_Palestra {
     static Random random = new Random();
     static long p = random.nextLong();
     public static void fim_palestra(Evento p1) throws Exception {
-        if(p1.status != "Acabou")
+        if(p1.status != StatusEvento.FINALIZADO)
         {
             throw new Exception("A palestra ainda não acabou!");
         }
