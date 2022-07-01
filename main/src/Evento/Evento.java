@@ -14,9 +14,10 @@ public abstract class Evento {
     public String data;
     public int horario;
     public StatusEvento status;
-    //CLASSIFICACAO FLOAT;
+    private float avaliacao_media;
 
-    static ArrayList<Evento> eventos = new ArrayList<Evento>(20);
+    private ArrayList<Float> avaliacoes = new ArrayList<Float>(); // salva todas as avaliacoes que esse evento recebeu
+    private static ArrayList<Evento> eventos = new ArrayList<Evento>(20);
     public Evento(String nome, String tipo, int numero_maximo, float preco,float duracao, String data,int horario, StatusEvento status)
     {
         this.nome = nome;
@@ -50,6 +51,16 @@ public abstract class Evento {
             System.out.println(eventos.get(i));
         }
     }
-    //Toda vez que comprar evento adiciona +1 em vagas
-
+    public void salva_avaliacao(float n){
+        // salvar em arquivo?
+        calc_avaliacao_media(n);
+    }
+    private void calc_avaliacao_media(float n){
+        avaliacoes.add(n);
+        float soma = 0;
+        for (float e : avaliacoes){
+            soma += e;
+        }
+        avaliacao_media = soma/avaliacoes.size();
+    }
 }
