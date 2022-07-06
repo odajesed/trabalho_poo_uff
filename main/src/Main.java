@@ -8,35 +8,181 @@ import Evento.Show.Show;
 import Evento.Gerenciador_Palestra;
 import Evento.StatusEvento;
 
+import java.util.Scanner;
+
+import static Evento.Evento.printar_neventos;
+
 public class Main {
     public static void main(String[] args) throws Exception {
-        Artista a1 = new Artista("a","a",13);
-        Evento s1 = new Show("show 1","a",5,500,1,"a",1,a1,StatusEvento.AGUARDANDO);
-        //Evento.adicionar_evento(s1);
-        
-        Artista a2 = new Artista("a2","a2",14);
-        Evento s2 = new Show("show 2","a2",5,500,1,"a2",1,a2,StatusEvento.AGUARDANDO);
-        //Evento.adicionar_evento(s2);
+        // POPULANDO
+        Artista a1 = new Artista("Radiohead","Rock",34000);
+        Evento s1 = new Show("The Radio Tour","Rock",5000,350,2,"25 de Dezembro",15,a1,StatusEvento.AGUARDANDO);
+        Evento.adicionar_evento(s1);
+        Artista a2 = new Artista("The Strokes","Rock",14000);
+        Evento s2 = new Show("Rock in Rio","Rock",15000,500,5,"12 de outubro",1,a2,StatusEvento.AGUARDANDO);
+        Evento.adicionar_evento(s2);
+        Palestrante p1 = new Palestrante("Boca09","Creche");
+        Evento pale1 = new Palestra("Como ser um gênio?","Comédia",100,5,1,"10 de Setembro",10,"Comediante",p1,StatusEvento.AGUARDANDO);
+        Evento.adicionar_evento(pale1);
 
-        Palestrante p1 = new Palestrante("a","a");
-        Evento pale1 = new Palestra("palestra 1","a",5,1,1,"a",1,"a",p1,StatusEvento.AGUARDANDO);
-        //Evento.adicionar_evento(pale1);
 
-        Usuario u1 = new Usuario("Jorge","11",10000);
-        UsuarioArquivo.inserir(u1);
-        
         Evento.cria_arquivo();
-        Evento.imprimir_eventos();
         //Evento.remover_evento(s1);
         //Evento.atualiza_avaliacao(pale1, 2);
         //Evento.imprimir_eventos();
 
         //Gerenciador_Palestra.fim_palestra(pale1);
-        u1.compra_evento(s1);
-        u1.compra_evento(s1);
-        u1.compra_evento(pale1);
-        u1.compra_evento(s1);
-        u1.compra_evento(pale1);
-        u1.imprimir_historico();
+
+
+
+
+
+
+        Scanner sc1 = new Scanner(System.in);
+        int numero = 1;
+        String nome;
+        System.out.println("                             ___ \n" +
+                " _ __   ___  _ __ ___   ___  |__ \\\n" +
+                "| '_ \\ / _ \\| '_ ` _ \\ / _ \\   / /\n" +
+                "| | | | (_) | | | | | |  __/  |_| \n" +
+                "|_| |_|\\___/|_| |_| |_|\\___|  (_)\n\n");
+        nome = sc1.nextLine();
+
+
+        Usuario user = new Usuario(nome,"113-534-235-09",10000);
+        UsuarioArquivo.inserir(user);
+
+        int escolha = 0;
+        while(numero == 1)
+        {
+            System.out.print(" _          _       \n" +
+                    "| |    ___ (_) __ _ \n" +
+                    "| |   / _ \\| |/ _` |\n" +
+                    "| |__| (_) | | (_| |\n" +
+                    "|_____\\___// |\\__,_|\n" +
+                    "         |__/\n\n");
+            System.out.println("_______________________________________");
+            System.out.println("| 1 - Comprar um Evento               |");
+            System.out.println("+_____________________________________+");
+            System.out.println("| 2 - Todos eventos                   |");
+            System.out.println("+_____________________________________+");
+            System.out.println("| 3 - Informações do usuário          |");
+            System.out.println("+_____________________________________+");
+            System.out.println("| 4 - Avaliações dos eventos          |");
+            System.out.println("+_____________________________________+");
+            System.out.println("| 5 - Historico de eventos            |");
+            System.out.println("+_____________________________________+");
+            System.out.println("| 0 - Sair da interface               |");
+            System.out.println("_______________________________________\n\n");
+            escolha = sc1.nextInt();
+
+
+            switch(escolha)
+            {
+                case 0:
+                    numero = -1;
+                    break;
+
+                case 1:
+                    while( escolha == 1)
+                    {
+                        int evento_compra = 0;
+                        System.out.print(" _____                 _            \n" +
+                                "| ____|_   _____ _ __ | |_ ___  ___ \n" +
+                                "|  _| \\ \\ / / _ \\ '_ \\| __/ _ \\/ __|\n" +
+                                "| |___ \\ V /  __/ | | | || (_) \\__ \\\n" +
+                                "|_____| \\_/ \\___|_| |_|\\__\\___/|___/\n\n");
+                        System.out.println(" Escolha qual evento comprar!   ");
+                        Evento.printar_todoseventos();
+
+
+                        evento_compra = sc1.nextInt();
+                        user.compra_evento(printar_neventos(evento_compra -1));
+
+                        break;
+                    }
+                case 2:
+                    while( escolha == 2)
+                    {
+                        Evento.printar_todoseventos();
+                        System.out.println("\n");
+                        System.out.println("+_____________________________________+");
+                        System.out.println("| 5 - Retornar                        |");
+                        System.out.println("+_____________________________________+");
+                        System.out.println("| 0 - Sair da interface               |");
+                        System.out.println("_______________________________________\n\n");
+                        escolha = sc1.nextInt();
+                        if(escolha == 0) numero = -1;
+                        if(escolha == 5) break;
+                        break;
+                    }
+                case 3:
+                    while( escolha == 3)
+                    {
+                        System.out.println("Você é ->  "+ user.getNome()+ "\n");
+                        System.out.println("Você tem ->  "+ user.getSaldo()+" reais de saldo.");
+
+                        user.imprimir_historico();
+
+                        System.out.println("+_____________________________________+");
+                        System.out.println("| 5 - Retornar                        |");
+                        System.out.println("+_____________________________________+");
+                        System.out.println("| 0 - Sair da interface               |");
+                        System.out.println("_______________________________________\n\n");
+                        escolha = sc1.nextInt();
+                        if(escolha == 0) numero = -1;
+                        if(escolha == 5) break;
+                        break;
+                    }
+
+                case 4:
+                    while( escolha == 4) {
+                        System.out.print("    _             _ _                       \n" +
+                                "   / \\__   ____ _| (_) __ _  ___ __ _  ___  \n" +
+                                "  / _ \\ \\ / / _` | | |/ _` |/ __/ _` |/ _ \\ \n" +
+                                " / ___ \\ V / (_| | | | (_| | (_| (_| | (_) |\n" +
+                                "/_/   \\_\\_/ \\__,_|_|_|\\__,_|\\___\\__,_|\\___/ \n\n");
+                        System.out.println("+_____________________________________+");
+                        System.out.println("| 5 - Retornar                        |");
+                        System.out.println("+_____________________________________+");
+                        System.out.println("| 0 - Sair da interface               |");
+                        System.out.println("_______________________________________\n\n");
+                        // PRINTAR AVALIACOES
+                        escolha = sc1.nextInt();
+                        if (escolha == 0) numero = -1;
+                        if (escolha == 5) break;
+                        break;
+                    }
+
+                case 5:
+                    while(escolha == 5)
+                    {
+                        user.imprimir_historico();
+                        System.out.println("\n\n");
+                        System.out.println("+_____________________________________+");
+                        System.out.println("| 5 - Retornar                        |");
+                        System.out.println("+_____________________________________+");
+                        System.out.println("| 0 - Sair da interface               |");
+                        System.out.println("_______________________________________\n\n");
+                        escolha = sc1.nextInt();
+                        if(escolha == 0) numero = -1;
+                        if(escolha == 5) break;
+                        break;
+                    }
+                break;
+
+            }
+
+
+
+        }
+
+
+
+
+
+
+
     }
+
 }

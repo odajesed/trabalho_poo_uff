@@ -3,6 +3,7 @@ package Evento;
 import jdk.jfr.Event;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 
 public abstract class Evento { // nao podem existir 2 eventos com o mesmo nome
     private String nome;
@@ -30,7 +31,18 @@ public abstract class Evento { // nao podem existir 2 eventos com o mesmo nome
         this.horario = horario;
         this.status = status;
     }
+    public static Evento printar_neventos(int n)
+    {
+        return eventos.get(n);
+    }
+    public static void printar_todoseventos()
+    {
+        int i =0;
+        for(Evento evento:eventos) {
+            System.out.println(++i + " "+evento.nome);
 
+        }
+    }
     public int get_vagas_restantes() {
         return numero_maximo - vagas;
 

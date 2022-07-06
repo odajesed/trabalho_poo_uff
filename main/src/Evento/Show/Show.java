@@ -9,5 +9,7 @@ public class Show extends Evento {
         super(nome,tipo, numero_maximo, preco, duracao, data,horario,status);
         this.artista = artista;
     }
+
+
 }
 
