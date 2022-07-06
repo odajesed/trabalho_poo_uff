@@ -36,6 +36,20 @@ public class EventoArquivo {
             System.out.println(e.getMessage());
         }
     }
+    public static void inserir(String nome, float avaliacaoMedia, String data){
+        try{
+            FileWriter fw = new FileWriter(arquivo,true);
+            BufferedWriter bw = new BufferedWriter(fw);
+            bw.write(nome+"/");
+            bw.write(avaliacaoMedia+"/");
+            bw.write(data);
+            bw.newLine();
+            bw.close();
+            fw.close();
+        }catch (IOException e){
+            System.out.println(e.getMessage());
+        }
+    }
     public static void remover(Evento evento){
         String[] dados = null;
         ArrayList<String> salvar = new ArrayList<String>();
@@ -65,6 +79,29 @@ public class EventoArquivo {
             }
             bw.close();
             fw2.close();
+        }catch(IOException e){
+            System.out.println(e.getMessage());
+        }
+    }
+    public static void atualiza_avaliacao(Evento evento, float n){ // 'n' é a nota do usuario para aquele evento
+        float novaNota = evento.calc_avaliacao_media(n);
+        String[] dados = null;
+        try{
+            FileReader fr = new FileReader(arquivo);
+            BufferedReader br = new BufferedReader(fr);
+            while(br.ready()){
+                String linha = br.readLine();
+                dados = linha.split("/"); // [nome,avaliacao,data]
+                if (evento.getNome().equals(dados[0])){
+                    break;
+                }
+            }
+            fr.close();
+            br.close();
+            
+            remover(evento);
+            inserir(dados[0],novaNota,dados[2]);
+            
         }catch(IOException e){
             System.out.println(e.getMessage());
         }

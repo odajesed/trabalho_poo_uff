@@ -55,13 +55,14 @@ public abstract class Evento { // nao podem existir 2 eventos com o mesmo nome
 //            System.out.println(eventos.get(i));
 //        }
 //    }
-    public void calc_avaliacao_media(float n){ // fazer funcao em EventoArquivo que mude no arquivo a nova media de avaliacao do evento
+    public float calc_avaliacao_media(float n){ // recebe a nota 'n' do usuario e a usa para calcular a nova media de avaliacao do evento
         avaliacoes.add(n);
         float soma = 0;
         for (float e : avaliacoes){
             soma += e;
         }
         avaliacao_media = soma/avaliacoes.size();
+        return avaliacao_media;
     }
 
     /**
