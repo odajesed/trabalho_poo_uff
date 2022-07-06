@@ -11,7 +11,7 @@ public class Usuario{
     private String nome;
     private String cpf;
     private float saldo;
-    private int bonus = 0; //toda vez que o usuario realiza sua 5 compras consecutiva ele ganha um saldo extra
+    private int bonus = 0; //toda vez que o usuario realiza sua 5 compra consecutiva ele ganha um saldo extra
     private HashMap<String,Integer> historico_compras = new HashMap<String,Integer>(); // MAP COM TODOS OS EVENTOS JA COMPRADOS PELO USUARIO COM LIMITE DE 5 INGRESSOS POR EVENTO
 
     public Usuario(String nome,String cpf, float saldo)

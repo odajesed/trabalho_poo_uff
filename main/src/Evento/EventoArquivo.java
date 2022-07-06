@@ -1,5 +1,5 @@
 /*
-    O ARQUIVO NÃO ESTÁ SENDO USADO COMO ARMAZENAMENTO PRINCIPAL DOS DADOS DE UM EVENTO, E SIM COMO UM MEIO DE SALVAR AS AVALIACOES DE CADA EVENTO
+    O ARQUIVO NÃO ESTÁ SENDO USADO COMO ARMAZENAMENTO PRINCIPAL DOS DADOS DE UM EVENTO, E SIM COMO UM MEIO DE ACESSAR AS INFORMAÇÕES PRINCIPAIS DE UM EVENTO
 */
 package Evento;
 
@@ -72,7 +72,6 @@ public class EventoArquivo {
             FileWriter fw2 = new FileWriter(arquivo,true);
             BufferedWriter bw = new BufferedWriter(fw2);
             
-            System.out.println(salvar.size());
             for (int i=0; i<salvar.size(); i++){
                 bw.write(salvar.get(i));
                 bw.newLine();
@@ -111,7 +110,7 @@ public class EventoArquivo {
         try{
             FileReader fr = new FileReader(arquivo);
             BufferedReader br = new BufferedReader(fr);
-            System.out.println("NOME / AVALIAÇÃO / DATA");
+            System.out.println("\nNOME / AVALIAÇÃO / DATA");
             while(br.ready()){
                 String linha = br.readLine();
                 dados = linha.split("/"); // [nome,avaliacao,data]

@@ -5,24 +5,24 @@ import java.io.ObjectOutputStream;
 
 
 public class UsuarioArquivo {
-    private FileOutputStream arquivo;
-    private ObjectOutputStream obj;
+    private static FileOutputStream arquivo;
+    private static ObjectOutputStream obj;
 
-    private void abre_arquivo(){
+    private static void abre_arquivo(){
         try{
             arquivo = new FileOutputStream("registroUsuario.dat");
             obj = new ObjectOutputStream(arquivo);
         }catch(Exception e){
-            System.out.println("Erro ao abrir o arquivo!");
+            System.out.println(e.getMessage());
         }
     }
     
-    public void inserir(Usuario u){
+    public static void inserir(Usuario u){
         abre_arquivo();
         try{
             obj.writeObject(u);
         }catch(Exception e){
-            System.out.println("Erro ao escrever no arquivo!");
+            System.out.println(e.getMessage()); // mensagem de erro = Usuario (?)
         }
     }
 }
