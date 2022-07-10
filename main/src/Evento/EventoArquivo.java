@@ -23,7 +23,20 @@ public class EventoArquivo {
     }
     
     public static void inserir(Evento c){
+        String[] dados = null;
         try{
+            FileReader fr = new FileReader(arquivo);
+            BufferedReader br = new BufferedReader(fr);
+            while(br.ready()){
+                String linha = br.readLine();
+                dados = linha.split("/"); // [nome,avaliacao,data]
+                if (c.getNome().equals(dados[0])){
+                    return; // impede insercao de eventos repetidos
+                }
+            }
+            fr.close();
+            br.close();
+            
             FileWriter fw = new FileWriter(arquivo,true);
             BufferedWriter bw = new BufferedWriter(fw);
             bw.write(c.getNome()+"/");
@@ -37,7 +50,20 @@ public class EventoArquivo {
         }
     }
     public static void inserir(String nome, float avaliacaoMedia, String data){
+        String[] dados = null;
         try{
+            FileReader fr = new FileReader(arquivo);
+            BufferedReader br = new BufferedReader(fr);
+            while(br.ready()){
+                String linha = br.readLine();
+                dados = linha.split("/"); // [nome,avaliacao,data]
+                if (nome.equals(dados[0])){
+                    return; // impede insercao de eventos repetidos
+                }
+            }
+            fr.close();
+            br.close();
+            
             FileWriter fw = new FileWriter(arquivo,true);
             BufferedWriter bw = new BufferedWriter(fw);
             bw.write(nome+"/");
@@ -46,7 +72,7 @@ public class EventoArquivo {
             bw.newLine();
             bw.close();
             fw.close();
-        }catch (IOException e){
+        }catch(IOException e){
             System.out.println(e.getMessage());
         }
     }
@@ -114,9 +140,9 @@ public class EventoArquivo {
             while(br.ready()){
                 String linha = br.readLine();
                 dados = linha.split("/"); // [nome,avaliacao,data]
-                System.out.print(dados[0]+" / ");
-                System.out.print(dados[1]+" / ");
-                System.out.println(dados[2]+" / ");
+                System.out.print(dados[0]+" - ");
+                System.out.print(dados[1]+" - ");
+                System.out.println(dados[2]+" - ");
             }
         }catch(IOException e){
             System.out.println(e.getMessage());

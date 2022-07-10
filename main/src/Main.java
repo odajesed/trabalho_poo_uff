@@ -95,7 +95,6 @@ public class Main {
                         System.out.println(" Escolha qual evento comprar!   ");
                         Evento.printar_todoseventos();
 
-
                         evento_compra = sc1.nextInt();
                         user.compra_evento(printar_neventos(evento_compra -1));
 
@@ -107,13 +106,13 @@ public class Main {
                         Evento.printar_todoseventos();
                         System.out.println("\n");
                         System.out.println("+_____________________________________+");
-                        System.out.println("| 5 - Retornar                        |");
+                        System.out.println("| 9 - Retornar                        |");
                         System.out.println("+_____________________________________+");
                         System.out.println("| 0 - Sair da interface               |");
                         System.out.println("_______________________________________\n\n");
                         escolha = sc1.nextInt();
                         if(escolha == 0) numero = -1;
-                        if(escolha == 5) break;
+                        if(escolha == 9) break;
                         break;
                     }
                 case 3:
@@ -125,32 +124,43 @@ public class Main {
                         user.imprimir_historico();
 
                         System.out.println("+_____________________________________+");
-                        System.out.println("| 5 - Retornar                        |");
+                        System.out.println("| 9 - Retornar                        |");
                         System.out.println("+_____________________________________+");
                         System.out.println("| 0 - Sair da interface               |");
                         System.out.println("_______________________________________\n\n");
                         escolha = sc1.nextInt();
                         if(escolha == 0) numero = -1;
-                        if(escolha == 5) break;
+                        if(escolha == 9) break;
                         break;
                     }
 
                 case 4:
                     while( escolha == 4) {
+                        int ev = 0;
+                        int nota = 0;
                         System.out.print("    _             _ _                       \n" +
                                 "   / \\__   ____ _| (_) __ _  ___ __ _  ___  \n" +
                                 "  / _ \\ \\ / / _` | | |/ _` |/ __/ _` |/ _ \\ \n" +
                                 " / ___ \\ V / (_| | | | (_| | (_| (_| | (_) |\n" +
                                 "/_/   \\_\\_/ \\__,_|_|_|\\__,_|\\___\\__,_|\\___/ \n\n");
+                        System.out.println(" Qual evento deseja avaliar?   ");
+                        Evento.printar_todoseventos();
+                        ev = sc1.nextInt();
+                        System.out.println(" De 1 - 5 quanto você da para o evento?   ");
+                        nota = sc1.nextInt();
+                        if (ev == 1) EventoArquivo.atualiza_avaliacao(s1, nota);///////////////////////
+                        if (ev == 2) EventoArquivo.atualiza_avaliacao(s2, nota);
+                        if (ev == 3) EventoArquivo.atualiza_avaliacao(pale1, nota);
+                        System.out.println(" Sua avaliação foi salva!   ");
                         System.out.println("+_____________________________________+");
-                        System.out.println("| 5 - Retornar                        |");
+                        System.out.println("| 9 - Retornar                        |");
                         System.out.println("+_____________________________________+");
                         System.out.println("| 0 - Sair da interface               |");
                         System.out.println("_______________________________________\n\n");
-                        // PRINTAR AVALIACOES
+                        
                         escolha = sc1.nextInt();
                         if (escolha == 0) numero = -1;
-                        if (escolha == 5) break;
+                        if (escolha == 9) break;
                         break;
                     }
 
@@ -160,13 +170,13 @@ public class Main {
                         user.imprimir_historico();
                         System.out.println("\n\n");
                         System.out.println("+_____________________________________+");
-                        System.out.println("| 5 - Retornar                        |");
+                        System.out.println("| 9 - Retornar                        |");
                         System.out.println("+_____________________________________+");
                         System.out.println("| 0 - Sair da interface               |");
                         System.out.println("_______________________________________\n\n");
                         escolha = sc1.nextInt();
                         if(escolha == 0) numero = -1;
-                        if(escolha == 5) break;
+                        if(escolha == 9) break;
                         break;
                     }
                 break;
