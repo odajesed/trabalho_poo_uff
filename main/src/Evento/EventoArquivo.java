@@ -142,8 +142,9 @@ public class EventoArquivo {
                 dados = linha.split("/"); // [nome,avaliacao,data]
                 System.out.print(dados[0]+" - ");
                 System.out.print(dados[1]+" - ");
-                System.out.println(dados[2]+" - ");
+                System.out.println(dados[2]);
             }
+            System.out.println("\n");
         }catch(IOException e){
             System.out.println(e.getMessage());
         }

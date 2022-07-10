@@ -152,6 +152,7 @@ public class Main {
                         if (ev == 2) EventoArquivo.atualiza_avaliacao(s2, nota);
                         if (ev == 3) EventoArquivo.atualiza_avaliacao(pale1, nota);
                         System.out.println(" Sua avaliação foi salva!   ");
+                        Evento.imprimir_eventos();
                         System.out.println("+_____________________________________+");
                         System.out.println("| 9 - Retornar                        |");
                         System.out.println("+_____________________________________+");
