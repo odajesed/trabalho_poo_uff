@@ -1,17 +1,19 @@
 
+import java.io.File;
 import java.io.FileOutputStream;
 import java.io.ObjectOutputStream;
 
 
 
 public class UsuarioArquivo {
-    private static FileOutputStream arquivo;
+    private static File arquivo = new File("registroUsuario.dat");
+    private static FileOutputStream fos;
     private static ObjectOutputStream obj;
 
     private static void abre_arquivo(){
         try{
-            arquivo = new FileOutputStream("registroUsuario.dat");
-            obj = new ObjectOutputStream(arquivo);
+            fos = new FileOutputStream(arquivo);
+            obj = new ObjectOutputStream(fos);
         }catch(Exception e){
             System.out.println(e.getMessage());
         }

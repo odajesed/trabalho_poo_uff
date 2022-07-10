@@ -6,7 +6,7 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.Scanner;
 
-public class Usuario{
+public class Usuario implements Serializable{
 
     private String nome;
     private String cpf;
@@ -19,6 +19,7 @@ public class Usuario{
         this.nome = nome;
         this.saldo = saldo;
         this.cpf = cpf;
+        UsuarioArquivo.inserir(this);
     }
 
     public float getSaldo() {
