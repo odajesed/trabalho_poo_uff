@@ -9,6 +9,7 @@ import java.util.Scanner;
 public class Usuario implements Serializable{
 
     private String nome;
+    private String senha;
     private String cpf;
     private float saldo;
     private int bonus = 0; //toda vez que o usuario realiza sua 5 compra consecutiva ele ganha um saldo extra
@@ -19,7 +20,9 @@ public class Usuario implements Serializable{
         this.nome = nome;
         this.saldo = saldo;
         this.cpf = cpf;
+        this.senha = "123"; // fixo para facilitar testes
         UsuarioArquivo.inserir(this);
+        UsuarioArquivo.salva_login(nome, senha);
     }
 
     public float getSaldo() {
@@ -64,7 +67,7 @@ public class Usuario implements Serializable{
         saldo += n;
     }
     
-    public void compra_evento(Evento evento) throws Exception {
+    public void compra_evento(Evento evento){
         if(saldo - evento.preco < 0)
         {
             System.out.println("Você não tem saldo suficiente! Deseja adicionar mais saldo? (1)SIM (2)NÃO");

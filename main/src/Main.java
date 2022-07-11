@@ -41,16 +41,22 @@ public class Main {
         Scanner sc1 = new Scanner(System.in);
         int numero = 1;
         String nome;
+        String senha;
         System.out.println("                             ___ \n" +
                 " _ __   ___  _ __ ___   ___  |__ \\\n" +
                 "| '_ \\ / _ \\| '_ ` _ \\ / _ \\   / /\n" +
                 "| | | | (_) | | | | | |  __/  |_| \n" +
                 "|_| |_|\\___/|_| |_| |_|\\___|  (_)\n\n");
         nome = sc1.nextLine();
-
+        System.out.print("\nSenha: ");
+        senha = sc1.nextLine();
 
         Usuario user = new Usuario(nome,"113-534-235-09",10000);
-        UsuarioArquivo.inserir(user);
+        
+        if (!UsuarioArquivo.verifica_login(nome, senha)){
+            System.out.println("Login Inválido!");
+            numero = -1;
+        }
 
         int escolha = 0;
         while(numero == 1)
@@ -103,7 +109,8 @@ public class Main {
                 case 2:
                     while( escolha == 2)
                     {
-                        Evento.printar_todoseventos();
+                        //Evento.printar_todoseventos();
+                        Evento.imprimir_eventos();
                         System.out.println("\n");
                         System.out.println("+_____________________________________+");
                         System.out.println("| 9 - Retornar                        |");
